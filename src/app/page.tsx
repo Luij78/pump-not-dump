@@ -313,7 +313,9 @@ export default function Home() {
               {[
                 { href: '/scanner', label: 'Scanner' },
                 { href: '/vote', label: 'Vote' },
-                { href: '/leaderboard', label: 'Board' },
+                { href: '/monitor', label: 'Monitor' },
+                { href: '/leaderboard', label: 'Leaderboard' },
+                { href: '/analytics', label: 'Analytics' },
                 { href: '/docs', label: 'Docs' },
               ].map((link) => (
                 <Link
@@ -668,6 +670,68 @@ export default function Home() {
                   <h3 className="text-xl font-black text-white mb-3">{feature.title}</h3>
                   <p className="text-gray-400 leading-relaxed">{feature.desc}</p>
                 </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="relative z-10 px-4 sm:px-6 py-24">
+        <div className="max-w-4xl mx-auto">
+          <ScrollReveal>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-4 tracking-tight">
+                Frequently Asked Questions
+              </h2>
+              <p className="text-gray-400 text-lg">Everything you need to know</p>
+            </div>
+          </ScrollReveal>
+
+          <div className="space-y-4">
+            {[
+              {
+                q: 'How does mandatory vesting prevent rug pulls?',
+                a: 'When you launch a token, the creator allocation is locked in a Solana smart contract with time-based unlocking. The contract has no admin keys, no pause function, no backdoors. The creator literally cannot access their tokens until the vesting schedule completes. This forces long-term alignment with the project.',
+              },
+              {
+                q: 'What vesting periods are available?',
+                a: 'You can choose 3, 6, or 12 month linear vesting. Tokens unlock gradually every second during the vesting period. For example, with a 12-month vest, 1/365th of your allocation unlocks per day.',
+              },
+              {
+                q: 'Can I trade tokens launched on pump.notdump?',
+                a: 'Yes! Only the CREATOR allocation is vested. All other tokens (public sale, liquidity pool, etc.) are immediately tradeable. Holders can buy and sell freely from day one.',
+              },
+              {
+                q: 'Is this on mainnet?',
+                a: 'Currently on Solana Devnet for the hackathon. Mainnet launch coming soon after security audits and additional testing. Join the waitlist to be notified.',
+              },
+              {
+                q: 'What are the fees?',
+                a: 'The protocol charges a small percentage fee on token creation to fund development and operations. Exact fee structure will be announced before mainnet launch.',
+              },
+              {
+                q: 'How is this different from pump.fun?',
+                a: 'pump.fun has no creator accountability. Anyone can launch, dump, and disappear. We enforce mandatory vesting at the protocol level. Creators must have skin in the game for months, not minutes.',
+              },
+            ].map((faq, i) => (
+              <ScrollReveal key={i} delay={i * 50}>
+                <details className="glass-card rounded-2xl border border-white/5 hover:border-purple-500/30 transition-all group">
+                  <summary className="px-6 sm:px-8 py-6 cursor-pointer list-none flex items-center justify-between group-hover:text-purple-400 transition-colors">
+                    <span className="font-bold text-lg text-white group-hover:text-purple-400">{faq.q}</span>
+                    <svg
+                      className="w-5 h-5 text-gray-400 group-hover:text-purple-400 transition-transform group-open:rotate-180"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </summary>
+                  <div className="px-6 sm:px-8 pb-6 text-gray-400 leading-relaxed">
+                    {faq.a}
+                  </div>
+                </details>
               </ScrollReveal>
             ))}
           </div>
